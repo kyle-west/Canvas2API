@@ -1,0 +1,61 @@
+<html>
+<head>
+   <title>Simple Keyboard Interaction</title>
+   <script type="text/javascript" src ='API/Keyboard/keyboard.js'></script>
+
+   <script>
+      function log(keyname) {
+         var _log = document.getElementById('the_log');
+         _log.innerHTML = "<p>You pressed the ["+keyname+"] key.</p>"
+            + _log.innerHTML;
+      }
+   </script>
+</head>
+
+<body>
+
+   <h1>Test out the Keyboard API</h1>
+   <p>
+      You may press [ENTER], [SPACE], or the arrow keys to
+      see how the Keyboard can interact.
+   </p>
+   <hr/>
+   <div id = 'the_log'></div>
+
+   <script>
+      // declare a new keyboard listener
+      _key = new Keyboard();
+
+      // override what the keys we care about do when the get hit
+      _key.when.ENTER = function () {
+         document.body.style.backgroundColor = "red";
+         log("ENTER");
+      }
+      _key.when.UP = function () {
+         document.body.style.backgroundColor = "orange";
+         log("UP");
+      }
+      _key.when.LEFT = function () {
+         document.body.style.backgroundColor = "yellow";
+         log("LEFT");
+      }
+      _key.when.RIGHT = function () {
+         document.body.style.backgroundColor = "green";
+         log("RIGHT");
+      }
+      _key.when.DOWN = function () {
+         document.body.style.backgroundColor = "blue";
+         log("DOWN");
+      }
+      _key.when.SPACE = function () {
+         document.body.style.backgroundColor = "purple";
+         log("SPACE");
+      }
+
+      // once we have our actions all set up, tell the keyboard to listen
+      _key.listen();
+   </script>
+
+
+</body>
+</html>

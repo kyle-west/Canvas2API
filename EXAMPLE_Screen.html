@@ -1,0 +1,71 @@
+<html>
+<head>
+   <title>Simple Screen Interaction</title>
+   <style>
+   </style>
+
+   <script type="text/javascript" src ='API/Screen/screen.js'></script>
+
+
+   <script>
+      // simple function to call Screen routines.
+
+      function center_orign_at_point() {
+         var x = parseInt(document.getElementById('xorig').value);
+         var y = parseInt(document.getElementById('yorig').value);
+         _screen.centerOrigin(x,y);
+         render_scene();
+      }
+
+      function draw_square() {
+         var x = parseInt(document.getElementById('xdraw').value);
+         var y = parseInt(document.getElementById('ydraw').value);
+         // context is updated globally by screen
+         context.fillStyle = "green";
+         context.fillRect(x,y,50,50);
+      }
+
+      function render_scene() {
+         _screen.clear();
+         _screen.showGrid(25,"red");
+         _screen.showOrigin("blue");
+      }
+   </script>
+
+</head>
+
+<body>
+   <h1>Test out the Screen API</h1>
+
+   <canvas id='canvas'>
+         "Sorry Dave, I'm afraid I can't do that."
+         (Run HTML5 canvas element, that is.)
+   </canvas>
+
+   <hr/>
+   <p>
+      Move Origin to:
+      (x = <input type="text" id="xorig" value="" size="2"/>
+      , y = <input type="text" id="yorig" value="" size="2"/>
+      ) <input type="button" value="move" onclick="center_orign_at_point()"/>
+      <br/> *(x,y) based off of the default paradigm of top left corner
+   </p>
+   <hr/>
+   <p>
+      Draw a square at:
+      (x = <input type="text" id="xdraw" value="100" size="2"/>
+      , y = <input type="text" id="ydraw" value="75" size="2"/>
+      ) <input type="button" value="draw" onclick="draw_square()"/>
+      <br/> *(x,y) based off where the origin is set.
+   </p>
+
+   <script>
+      // declare a Screen to work with and set up
+      _screen = new Screen(500, 400) // give dimensions
+      _screen.setup(); // use default set up mode -- see API for other options
+      _screen.background("black");
+
+      render_scene(); // declared in the <HEAD> tag
+   </script>
+</body>
+</html>
