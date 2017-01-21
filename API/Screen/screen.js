@@ -1,4 +1,4 @@
-/****************************************************************************
+/** *************************************************************************
 * <h1> Screen Class <h1>
 * <h3> Created by Kyle West, 2017 </h3>
 *
@@ -16,8 +16,9 @@
 * <p> Data includes: width, height, canvas </p>
 ****************************************************************************/
 
-/****************************************************************************
+/** *************************************************************************
 * <h1> Constructor for the Screen Class </h1>
+* @constructor
 * @param x, the width of the canvas element
 * @param y, the height of the cnavas element
 ****************************************************************************/
@@ -32,17 +33,17 @@ function Screen (w,h,x,y) {
    this.y = y;
 }
 
-/****************************************************************************
+/** *************************************************************************
 * <h1> Prototype for the Screen Class </h1>
 * <p> Note: the global var 'context' is updated through the modifiers </p>
 ****************************************************************************/
 Screen.prototype = {
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Constructor tied in for the Screen Class Defined Above</h1>
    *************************************************************************/
    constructor: Screen,
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Background Function </h1>
    * <p> Changes the background color for the screen </p>
    * @param color, the color to change the background to.
@@ -52,7 +53,7 @@ Screen.prototype = {
       this.canvas.style.backgroundColor = color;
    },
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Clear Function </h1>
    * <p> Removes all visible elements from the canvas </p>
    *************************************************************************/
@@ -62,8 +63,8 @@ Screen.prototype = {
       this.getContext().clearRect(0, 0, this.width, -this.height);
       this.getContext().clearRect(0, 0, -this.width, -this.height);
    },
-   
-   /*************************************************************************
+
+   /** **********************************************************************
    * <h1> Set Up Function </h1>
    * <p>
    *    setup() changes the size and paradigm of the canvas configuration.
@@ -91,7 +92,7 @@ Screen.prototype = {
       else this.normalize();
    },
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Get Conext Function </h1>
    * <p>
    *    Returns the current conext this screen is working with. Useful only
@@ -106,7 +107,7 @@ Screen.prototype = {
       return this.canvas.getContext(type);
    },
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Normalize Function </h1>
    * <p>
    *    Changes the paradigm of the screen. Transforms screen to the regular
@@ -122,7 +123,7 @@ Screen.prototype = {
       this.y = 0;
    },
 
-   /*************************************************************************
+   /** ***********************************************************************
    * <h1> Center Origin Function </h1>
    * <p>
    *    Changes the paradigm of the screen. Transforms screen to the regular
@@ -142,7 +143,7 @@ Screen.prototype = {
       this.y = y;
    },
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Show Origin Function </h1>
    * <p> Displays the origin marker </p>
    * @param color, optional, change the color of the marker.
@@ -164,7 +165,7 @@ Screen.prototype = {
       context.lineWidth = temp_lw;    // restore line width
    },
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Show Grid Function </h1>
    * <p> Displays grid lines from the origin </p>
    * @param inc, the increment for each grid line, 10px by default.

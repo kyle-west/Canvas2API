@@ -1,4 +1,4 @@
-/****************************************************************************
+/** *************************************************************************
 * <h1> Keyboard Class <h1>
 * <h3> Created by Kyle West, 2017 </h3>
 *
@@ -10,7 +10,7 @@
 * </p>
 ****************************************************************************/
 Keyboard.prototype = {
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Constructor defined below the prototype </h1>
    * <p>
    *    Registers the gobal key codes to data variables.
@@ -18,7 +18,7 @@ Keyboard.prototype = {
    *************************************************************************/
    constructor: Keyboard,
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Listen Function </h1>
    * <p>
    *    Binds the when.[KEY] function to the approriate key, and listens for
@@ -97,7 +97,7 @@ Keyboard.prototype = {
       document.addEventListener("keydown", keyboardInteract, false);
    },
 
-   /*************************************************************************
+   /** **********************************************************************
    * <h1> Default Stub Functions called by listener </h1>
    * <p>
    *    Stub functions to render no event action by default. Override to
@@ -170,8 +170,9 @@ Keyboard.prototype = {
    }
 };
 
-/******************************************************************
+/** ***************************************************************
 * Constructor: Registers the gobal key codes.
+* @constructor
 ******************************************************************/
 function Keyboard() {
    // action keys

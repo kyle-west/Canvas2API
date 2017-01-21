@@ -1,0 +1,104 @@
+<html>
+<head>
+   <title>Simple Keyboard Interaction</title>
+
+   <script type="text/javascript" src ='API/Render/renderengine.js'></script>
+   <script type="text/javascript" src ='API/Render/renderable.js'></script>
+   <script type="text/javascript" src ='API/Render/location.js'></script>
+
+   <script type="text/javascript" src ='API/Screen/screen.js'></script>
+   <script type="text/javascript" src ='API/Keyboard/keyboard.js'></script>
+</head>
+
+<body>
+   <h1>Test out the RenderEngine API</h1>
+   <h3>Also featuring <i>Keyboard</i> and <i>Screen</i></h3>
+   <p>
+      Press the arrow keys to move the cyan block.
+   </p>
+   <hr/>
+
+   <canvas id = "canvas">
+      Your browser is not good enough to hand this code.
+   </canvas>
+
+   <script>
+      // configure the screen how we want it to be set up.
+      // See the Screen Example for more details on how this works.
+      _can = new Screen(500,300);
+      _can.setup();
+      _can.centerOrigin();
+      _can.background('black');
+
+      // the RenderEngine takes a Screen, but if we don't give it one,
+      // it will create a new Screen with the default settings.
+      _scene = new RenderEngine(_can);
+
+      // Create a series of Renderable objects to give to the RenderEngine.
+      // All a Renderable object needs is a Location and a drawing function.
+      // To make the object have dynamic movement, use the Location.get*()
+      // functions instead of accessing the raw .x or .y variables.
+      main_block = new Renderable(new Location(0,0), function () {
+         _scene.context.fillStyle = "cyan";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            30,30);
+         }
+      );
+      // Note that in these next objects we send in an extra two arguments to
+      // Location. These two are the dx and dy components of a velocity (given
+      // respectively). Location acts like a point when needed, but has some
+      // functionality of a velocity type object.
+      obj1 = new Renderable(new Location(200,-15,-1,5), function () {
+         _scene.context.fillStyle = "green";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            30,30);
+         }
+      );
+      obj2 = new Renderable(new Location(-200,-15,5,0), function () {
+         _scene.context.fillStyle = "blue";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            30,30);
+         }
+      );
+      obj3 = new Renderable(new Location(0,0,-3,2), function () {
+         _scene.context.fillStyle = "red";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            30,30);
+         }
+      );
+
+      // Next we add all the objects to the RenderEngine's buffer so that
+      // the engine knows which objects it is responsible for drawing
+      _scene.bufferAdd(obj1);
+      _scene.bufferAdd(obj2);
+      _scene.bufferAdd(obj3);
+      _scene.bufferAdd(main_block); // goes in last to be drawn on top
+
+
+      // Set up a Keyboard listener so that we can control our main_block.
+      // See the Keyboard Example for more details on how this works.
+      _key = new Keyboard();
+      _key.when.UP = function () {
+         main_block.location.dy +=1;
+      }
+      _key.when.DOWN = function () {
+         main_block.location.dy -=1;
+      }
+      _key.when.LEFT = function () {
+         main_block.location.dx -=1;
+      }
+      _key.when.RIGHT = function () {
+         main_block.location.dx +=1;
+      }
+
+      // Now that we are all set up, tell the RenderEngine to start animating.
+      // Also tell the window to listen for our Keyboard actions.
+      _scene.animate(); // use .render() for a static scene
+      _key.listen();
+   </script>
+</body>
+</html>
