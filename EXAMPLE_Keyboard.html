@@ -3,6 +3,8 @@
    <title>Simple Keyboard Interaction</title>
    <script type="text/javascript" src ='API/Keyboard/keyboard.js'></script>
 
+   <link rel="stylesheet" href="css/master.css"/>
+
    <script>
       function log(keyname) {
          var _log = document.getElementById('the_log');
@@ -36,7 +38,7 @@
          log("UP");
       }
       _key.when.LEFT = function () {
-         document.body.style.backgroundColor = "yellow";
+         document.body.style.backgroundColor = "darkyellow";
          log("LEFT");
       }
       _key.when.RIGHT = function () {

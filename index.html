@@ -1,16 +1,25 @@
 <html>
 <head>
-   <title>Simple Keyboard Interaction</title>
+   <title>Canvas2 API</title>
 
    <script type="text/javascript" src ='API/Render/renderengine.js'></script>
    <script type="text/javascript" src ='API/Render/renderable.js'></script>
    <script type="text/javascript" src ='API/Render/location.js'></script>
 
    <script type="text/javascript" src ='API/Screen/screen.js'></script>
+
+   <link rel="stylesheet" href="css/master.css"/>
 </head>
 
 <body>
-   <h1>Welcome to the Canvas2API!</h1>
+   <h1>Welcome to the Canvas2 API!</h1>
+
+   <div class="buttonHolder">
+      <br/>
+      <input type ="button" value = "View us on GitHub!" class = "centerbtn"
+             onclick="window.location.href='https://github.com/kyle-west/Canvas2API/'"/>
+      <br/>
+   </div>
    <h3>I know the site isn't much to look at, but that's ok!</h3>
    <p>
       It's really just here so that I can host it for others to use.
@@ -18,7 +27,7 @@
    <hr/>
 
 
-   <canvas id = "canvas">
+   <canvas id = "canvas" class = "widescreen">
    </canvas>
 
    <hr/>
@@ -30,7 +39,7 @@
    </ul>
 
    <script>
-      _can = new Screen(window.innerWidth,150);
+      _can = new Screen(document.body.width,150);
       _can.setup();
       _can.centerOrigin();
       _can.background('grey');

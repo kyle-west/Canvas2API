@@ -1,0 +1,32 @@
+* {
+   color: cyan;
+   font-family: Consolas;
+}
+
+h1 {
+   text-align: center;
+}
+
+body {
+   width: 75%;
+   background-color: #4a424f;
+   margin: auto;
+   padding-top: 20px;
+}
+
+canvas.widescreen {
+   width: 100%;
+}
+
+input.centerbtn {
+   width: 100%;
+   margin: auto;
+   font-size: 16pt;
+   font-weight: bold;
+   color: #4a424f;
+   background-color: cyan;
+}
+.buttonHolder {
+   width: 250;
+   margin: auto;
+}
