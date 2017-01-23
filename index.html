@@ -28,6 +28,24 @@
    <h3>Canvas2 is a 2D graphics engine for the HTML5 canvas element.</h3>
    <p>
       I know the site isn't much to look at, but that's ok! It's really just here so that I can host it for others to use.
+      To include our files in your project, simply put our project in your root directory and nest these tags under your
+      <span class = "code">&lt;head&gt;</span> tag:
+   </p>
+   <p class = "pref">
+      &lt;<span class = "tag">script</span>
+         <span class = "att">type</span>=<span class = "string">"text/javascript"</span> <span class = "att"> src</span>=<span class = "string">"API/Render/renderengine.js"</span>&gt;&lt;<span class = "tag">/script</span>&gt;<br/>
+      &lt;<span class = "tag">script</span>
+         <span class = "att">type</span>=<span class = "string">"text/javascript"</span>
+         <span class = "att">src</span>=<span class = "string">"API/Render/renderable.js"</span>&gt;&lt;<span class = "tag">/script</span>&gt;<br/>
+      &lt;<span class = "tag">script</span>
+         <span class = "att">type</span>=<span class = "string">"text/javascript"</span>
+         <span class = "att">src</span>=<span class = "string">"API/Render/location.js"</span>&gt;&lt;<span class = "tag">/script</span>&gt;<br/>
+      &lt;<span class = "tag">script</span>
+         <span class = "att">type</span>=<span class = "string">"text/javascript"</span>
+         <span class = "att">src</span>=<span class = "string">"API/Screen/screen.js"</span>&gt;&lt;<span class = "tag">/script</span>&gt;<br/>
+      &lt;<span class = "tag">script</span>
+         <span class = "att">type</span>=<span class = "string">"text/javascript"</span>
+         <span class = "att">src</span>=<span class = "string">"API/Keyboard/keyboard.js"</span>&gt;&lt;<span class = "tag">/script</span>&gt;<br/>
    </p>
    <hr/>
 
@@ -35,7 +53,7 @@
    <canvas id = "canvas" class = "widescreen">
    </canvas>
 
-   <hr/>
+   <hr id = "w"/>
    <p> Checkout some examples of what it can do:</p>
    <ul>
       <li><a href="EXAMPLE_Screen.html">Screen<a/></li>
@@ -44,13 +62,13 @@
    </ul>
 
    <script>
-      _can = new Screen(document.body.width,150);
+      _can = new Screen(window.innerWidth*.70,150);
       _can.setup();
       _can.centerOrigin();
       _can.background('grey');
       _scene = new RenderEngine(_can);
-      main_block = new Renderable(new Location(0,0,2,-3), function () {
-         _scene.context.fillStyle = "purple";
+      obj0 = new Renderable(new Location(0,0,2,-3), function () {
+         _scene.context.fillStyle = "red";
          _scene.context.fillRect(
             this.location.getX(),this.location.getY(),
             15,15);
@@ -58,39 +76,71 @@
       );
 
       obj1 = new Renderable(new Location(100,-15,-1,5), function () {
-         _scene.context.fillStyle = "green";
+         _scene.context.fillStyle = "orange";
          _scene.context.fillRect(
             this.location.getX(),this.location.getY(),
             15,15);
          }
       );
       obj2 = new Renderable(new Location(-100,-15,5,0), function () {
-         _scene.context.fillStyle = "blue";
-         _scene.context.fillRect(
-            this.location.getX(),this.location.getY(),
-            15,15);
-         }
-      );
-      obj3 = new Renderable(new Location(0,0,-3,2), function () {
-         _scene.context.fillStyle = "red";
-         _scene.context.fillRect(
-            this.location.getX(),this.location.getY(),
-            15,15);
-         }
-      );
-      obj4 = new Renderable(new Location(-25,25,-1,-3), function () {
          _scene.context.fillStyle = "yellow";
          _scene.context.fillRect(
             this.location.getX(),this.location.getY(),
             15,15);
          }
       );
+      obj3 = new Renderable(new Location(0,0,-3,2), function () {
+         _scene.context.fillStyle = "green";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            15,15);
+         }
+      );
+      obj4 = new Renderable(new Location(-25,25,-1,-3), function () {
+         _scene.context.fillStyle = "blue";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            15,15);
+         }
+      );
+      obj5 = new Renderable(new Location(-30,2,-5,-2), function () {
+         _scene.context.fillStyle = "purple";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            15,15);
+         }
+      );
+      obj6 = new Renderable(new Location(10,13,2,-4), function () {
+         _scene.context.fillStyle = "magenta";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            15,15);
+         }
+      );
+      obj7 = new Renderable(new Location(7,-22,-2,1), function () {
+         _scene.context.fillStyle = "cyan";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            15,15);
+         }
+      );
+      obj8 = new Renderable(new Location(55,10,-3,-4), function () {
+         _scene.context.fillStyle = "teal";
+         _scene.context.fillRect(
+            this.location.getX(),this.location.getY(),
+            15,15);
+         }
+      );
 
+      _scene.bufferAdd(obj0);
       _scene.bufferAdd(obj1);
       _scene.bufferAdd(obj2);
       _scene.bufferAdd(obj3);
       _scene.bufferAdd(obj4);
-      _scene.bufferAdd(main_block);
+      _scene.bufferAdd(obj5);
+      _scene.bufferAdd(obj6);
+      _scene.bufferAdd(obj7);
+      _scene.bufferAdd(obj8);
 
       _scene.animate();
    </script>

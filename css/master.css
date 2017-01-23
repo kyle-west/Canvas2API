@@ -30,3 +30,30 @@ input.centerbtn {
    width: 250;
    margin: auto;
 }
+
+.pref, .code {
+   background-color: black;
+   color:magenta;
+   font-family: Courier;
+   border: 2px inset #4a424f;
+}
+.pref {
+   padding: 15px;
+}
+
+
+
+
+
+.tag {
+   font-family: Courier;
+   color: slateblue;
+}
+.string {
+   font-family: Courier;
+   color: yellowgreen;
+}
+.att {
+   font-family: Courier;
+   color: orange;
+}
