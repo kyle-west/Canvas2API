@@ -1,7 +1,7 @@
 <html>
 <head>
    <title>Simple Keyboard Interaction</title>
-   <script type="text/javascript" src ='API/Keyboard/keyboard.js'></script>
+   <script type="text/javascript" src ='Engine/Keyboard/keyboard.js'></script>
 
    <link rel="stylesheet" href="css/master.css"/>
 
@@ -16,7 +16,7 @@
 
 <body>
 
-   <h1>Test out the Keyboard API</h1>
+   <h1>Test out the Keyboard Listener</h1>
    <p>
       You may press [ENTER], [SPACE], or the arrow keys to
       see how the Keyboard can interact.
@@ -38,7 +38,7 @@
          log("UP");
       }
       _key.when.LEFT = function () {
-         document.body.style.backgroundColor = "darkyellow";
+         document.body.style.backgroundColor = "magenta";
          log("LEFT");
       }
       _key.when.RIGHT = function () {
